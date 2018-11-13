@@ -4,4 +4,4 @@ This repository contains the bash scripts and python code to query the relevant 
 
 More details on how to use the masks are given [here](http://jeancoupon.com/brightStarMasks).
 
-![mask example][HSC_brightStarMasks/images/masks.png]
+![mask example][https://github.com/jcoupon/HSC_brightStarMasks/tree/master/images/masks.png]
