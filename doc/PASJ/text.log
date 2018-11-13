@@ -1,0 +1,361 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=latex 2014.8.14)  3 MAR 2017 13:54
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**text.tex
+(./text.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(./pasj01.cls
+Document Class: pasj01 2014/11/25 v.1.0 Simplified document class for PASJ
+            (C) 2014 Astronomical Society of Japan
+\aucnt=\count79
+\tempcount=\count80
+\@tempcnta=\count81
+\defaultbaselineskip=\dimen102
+LaTeX Info: Redefining \normalsize on input line 195.
+\mathindent=\skip41
+\c@part=\count82
+\c@chapter=\count83
+\c@section=\count84
+\c@subsection=\count85
+\c@subsubsection=\count86
+\c@paragraph=\count87
+\c@subparagraph=\count88
+\c@figure=\count89
+\c@table=\count90
+\bx@i=\insert233
+\bx@ii=\insert232
+\bx@iii=\insert231
+\bx@iv=\insert230
+\bx@v=\insert229
+\bx@vi=\insert228
+\bx@vii=\insert227
+\bx@viii=\insert226
+\bx@ix=\insert225
+\bx@x=\insert224
+\bx@xi=\insert223
+\bx@xii=\insert222
+\bx@xiii=\insert221
+\bx@xiv=\insert220
+\bx@xv=\insert219
+\bx@xvi=\insert218
+\bx@xvii=\insert217
+\bx@xviii=\insert216
+\bx@xix=\insert215
+\bx@xx=\insert214
+\bx@xxi=\insert213
+\bx@xxii=\insert212
+\bx@xxiii=\insert211
+\bx@xxiv=\insert210
+\bx@xxv=\insert209
+\bx@xxvi=\insert208
+\bx@xxvii=\insert207
+\bx@xxviii=\insert206
+\bx@xxix=\insert205
+\bx@xxx=\insert204
+\bx@xxxi=\insert203
+\bx@xxxii=\insert202
+\bx@xxxiii=\insert201
+\bx@xxxiv=\insert200
+\bx@xxxv=\insert199
+\bx@xxxvi=\insert198
+\bx@xxxvii=\insert197
+\bx@xxxviii=\insert196
+\bx@xxxix=\insert195
+\bx@xl=\insert194
+\bx@xli=\insert193
+\bx@xlii=\insert192
+\bx@xliii=\insert191
+\bx@xliv=\insert190
+\bx@xlv=\insert189
+\bx@xlvi=\insert188
+\bx@xlvii=\insert187
+\bx@xlviii=\insert186
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\@lt@hsize=\dimen103
+\@lt@caption@hsize=\dimen104
+\@lt@currbox=\box26
+\@lt@head=\box27
+\@lt@firsthead=\box28
+\@lt@foot=\box29
+\@lt@lastfoot=\box30
+\@lt@prevline=\box31
+\@lt@captionbox=\box32
+\@lt@goalsize=\dimen105
+\@lt@doublerulesep=\dimen106
+\@lt@id=\count91
+\@lt@colcnt=\count92
+\@lt@maxcols=\count93
+\@@arrayrulewidth=\dimen107
+\bibindent=\dimen108
+\@bib@textbox=\box33
+LaTeX Info: Redefining \cite on input line 1703.
+\@articleid=\count94
+\@saved@topsep=\skip44
+\@abstract@textbox=\box34
+\@toc@leaderskip=\dimen109
+\@toc@leader@dot=\box35
+LaTeX Font Info:    Calculating math sizes for size <9.25> on input line 2217.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.47496> not available
+(Font)              size <6> substituted on input line 2217.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.47496> not available
+(Font)              size <6> substituted on input line 2217.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.47496> not available
+(Font)              size <6> substituted on input line 2217.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9.25> on input line 2217.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6.47496> on input line 2217.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <4.625> on input line 2217.
+LaTeX Info: Redefining \textbackslash on input line 3600.
+\leftroot@=\count95
+\uproot@=\count96
+LaTeX Info: Redefining \sqrt on input line 3658.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen110
+\Gin@req@width=\dimen111
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 137.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+\tableleftskip=\skip45
+\tablerightskip=\skip46
+\tablenoteleftskip=\skip47
+\tablenoterightskip=\skip48
+\tempbox=\box36
+\tabledim=\dimen112
+) (./text.aux
+
+LaTeX Warning: Label `key-3' multiply defined.
+
+
+LaTeX Warning: Label `key-3' multiply defined.
+
+)
+\openout1 = `text.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 21.
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 47.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.5> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 47.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <18> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <12> not available
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 48.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 48.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 48.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 48.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 48.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 48.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 48.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 48.
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 48.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 48.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.25> not available
+(Font)              size <5> substituted on input line 48.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
+(Font)              size <8> substituted on input line 48.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.25> not available
+(Font)              size <5> substituted on input line 48.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 48.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.25> not available
+(Font)              size <5> substituted on input line 48.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8.5> on input line 48.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5.94997> on input line 48.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <4.25> on input line 48.
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 48.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <4.25> not available
+(Font)              size <5> substituted on input line 48.
+
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 51.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 54.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
+
+LaTeX Warning: Reference `sec:catalogue' on page 1 undefined on input line 58.
+
+
+LaTeX Warning: Reference `sec:masks' on page 1 undefined on input line 58.
+
+
+LaTeX Warning: Reference `sec:valid' on page 1 undefined on input line 58.
+
+
+LaTeX Warning: Reference `sec:conclusions' on page 1 undefined on input line 58
+.
+
+[1
+
+
+]
+
+LaTeX Warning: Reference `fig:saturated_star' on page 2 undefined on input line
+ 67.
+
+Do not use \includegraphics directly. Use \FigureFile for graphics.
+File: galfrac.eps Graphic file (type eps)
+<galfrac.eps>
+Overfull \hbox (1792.52362pt too wide) in paragraph at lines 75--76
+ [] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 77.
+
+LaTeX Warning: Float too large for page by 2314.97473pt on input line 78.
+
+[2] [3]
+
+LaTeX Warning: Reference `fig:sample' on page 4 undefined on input line 94.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.25> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 112.
+[4]
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.2> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 136.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 182.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 182.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 182.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 182.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <11> on input line 182.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7.69997> on input line 182.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5.5> on input line 182.
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 182.
+
+[5] (./text.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.75pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1811 strings out of 493118
+ 21760 string characters out of 6135459
+ 131628 words of memory out of 5000000
+ 5300 multiletter control sequences out of 15000+600000
+ 25317 words of font info for 66 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 32i,9n,23p,953b,283s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on text.dvi (5 pages, 8480 bytes).

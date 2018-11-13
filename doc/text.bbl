@@ -1,0 +1,59 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{{Gaia Collaboration} et~al.,}{{Gaia
+  Collaboration} et~al.}{2016a}]{Gaia-Collaboration:2016ab}
+{Gaia Collaboration} et~al., 2016a, \mn@doi [\aap]
+  {10.1051/0004-6361/201629272}, \href
+  {http://adsabs.harvard.edu/abs/2016A%26A...595A...1G} {595, A1}
+
+\bibitem[\protect\citeauthoryear{{Gaia Collaboration} et~al.,}{{Gaia
+  Collaboration} et~al.}{2016b}]{Gaia-Collaboration:2016aa}
+{Gaia Collaboration} et~al., 2016b, \mn@doi [\aap]
+  {10.1051/0004-6361/201629512}, \href
+  {http://adsabs.harvard.edu/abs/2016A%26A...595A...2G} {595, A2}
+
+\bibitem[\protect\citeauthoryear{{H{\o}g} et~al.,}{{H{\o}g}
+  et~al.}{2000}]{Hog:2000aa}
+{H{\o}g} E.,  et~al., 2000, \aap, \href
+  {http://adsabs.harvard.edu/abs/2000A%26A...355L..27H} {355, L27}
+
+\bibitem[\protect\citeauthoryear{{Jordi} et~al.,}{{Jordi}
+  et~al.}{2010}]{Jordi:2010aa}
+{Jordi} C.,  et~al., 2010, \mn@doi [\aap] {10.1051/0004-6361/201015441}, \href
+  {http://adsabs.harvard.edu/abs/2010A%26A...523A..48J} {523, A48}
+
+\bibitem[\protect\citeauthoryear{{Pickles} \& {Depagne}}{{Pickles} \&
+  {Depagne}}{2010}]{Pickles:2010aa}
+{Pickles} A.,  {Depagne} {\'E}.,  2010, \mn@doi [\pasp] {10.1086/657947}, \href
+  {http://adsabs.harvard.edu/abs/2010PASP..122.1437P} {122, 1437}
+
+\bibitem[\protect\citeauthoryear{{SDSS Collaboration} et~al.,}{{SDSS
+  Collaboration} et~al.}{2016}]{SDSS-Collaboration:2016aa}
+{SDSS Collaboration} et~al., 2016, preprint, \href
+  {http://adsabs.harvard.edu/abs/2016arXiv160802013S} {} (\mn@eprint {arXiv}
+  {1608.02013})
+
+\bibitem[\protect\citeauthoryear{{York} et~al.,}{{York}
+  et~al.}{2000}]{york:2000aa}
+{York} D.~G.,  et~al., 2000, \mn@doi [\aj] {10.1086/301513}, \href
+  {http://adsabs.harvard.edu/abs/2000AJ....120.1579Y} {120, 1579}
+
+\makeatother
+\end{thebibliography}

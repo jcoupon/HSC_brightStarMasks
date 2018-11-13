@@ -1,0 +1,6 @@
+# Parameters to draw regions for masking.
+# For bright and faint, the circle radius is defined as 
+# r [arcsec] = a*np.exp(-mag/b) 
+# mask_type a b
+bright 708.8715964324207 8.414671483589547
+faint 694.6504856306144 4.0365799975229955

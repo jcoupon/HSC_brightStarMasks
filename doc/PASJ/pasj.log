@@ -1,0 +1,700 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.8.14)  3 MAR 2017 11:56
+entering extended mode
+ \write18 enabled.
+ %&-line parsing enabled.
+**pasj.tex
+(./pasj.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(./pasj01.cls
+Document Class: pasj01 2014/11/25 v.1.0 Simplified document class for PASJ
+            (C) 2014 Astronomical Society of Japan
+\aucnt=\count79
+\tempcount=\count80
+\@tempcnta=\count81
+\defaultbaselineskip=\dimen102
+LaTeX Info: Redefining \normalsize on input line 195.
+\mathindent=\skip41
+\c@part=\count82
+\c@chapter=\count83
+\c@section=\count84
+\c@subsection=\count85
+\c@subsubsection=\count86
+\c@paragraph=\count87
+\c@subparagraph=\count88
+\c@figure=\count89
+\c@table=\count90
+\bx@i=\insert233
+\bx@ii=\insert232
+\bx@iii=\insert231
+\bx@iv=\insert230
+\bx@v=\insert229
+\bx@vi=\insert228
+\bx@vii=\insert227
+\bx@viii=\insert226
+\bx@ix=\insert225
+\bx@x=\insert224
+\bx@xi=\insert223
+\bx@xii=\insert222
+\bx@xiii=\insert221
+\bx@xiv=\insert220
+\bx@xv=\insert219
+\bx@xvi=\insert218
+\bx@xvii=\insert217
+\bx@xviii=\insert216
+\bx@xix=\insert215
+\bx@xx=\insert214
+\bx@xxi=\insert213
+\bx@xxii=\insert212
+\bx@xxiii=\insert211
+\bx@xxiv=\insert210
+\bx@xxv=\insert209
+\bx@xxvi=\insert208
+\bx@xxvii=\insert207
+\bx@xxviii=\insert206
+\bx@xxix=\insert205
+\bx@xxx=\insert204
+\bx@xxxi=\insert203
+\bx@xxxii=\insert202
+\bx@xxxiii=\insert201
+\bx@xxxiv=\insert200
+\bx@xxxv=\insert199
+\bx@xxxvi=\insert198
+\bx@xxxvii=\insert197
+\bx@xxxviii=\insert196
+\bx@xxxix=\insert195
+\bx@xl=\insert194
+\bx@xli=\insert193
+\bx@xlii=\insert192
+\bx@xliii=\insert191
+\bx@xliv=\insert190
+\bx@xlv=\insert189
+\bx@xlvi=\insert188
+\bx@xlvii=\insert187
+\bx@xlviii=\insert186
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\@lt@hsize=\dimen103
+\@lt@caption@hsize=\dimen104
+\@lt@currbox=\box26
+\@lt@head=\box27
+\@lt@firsthead=\box28
+\@lt@foot=\box29
+\@lt@lastfoot=\box30
+\@lt@prevline=\box31
+\@lt@captionbox=\box32
+\@lt@goalsize=\dimen105
+\@lt@doublerulesep=\dimen106
+\@lt@id=\count91
+\@lt@colcnt=\count92
+\@lt@maxcols=\count93
+\@@arrayrulewidth=\dimen107
+\bibindent=\dimen108
+\@bib@textbox=\box33
+LaTeX Info: Redefining \cite on input line 1703.
+\@articleid=\count94
+\@saved@topsep=\skip44
+\@abstract@textbox=\box34
+\@toc@leaderskip=\dimen109
+\@toc@leader@dot=\box35
+LaTeX Font Info:    Calculating math sizes for size <9.25> on input line 2217.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.47496> not available
+(Font)              size <6> substituted on input line 2217.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.47496> not available
+(Font)              size <6> substituted on input line 2217.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.47496> not available
+(Font)              size <6> substituted on input line 2217.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9.25> on input line 2217.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6.47496> on input line 2217.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <4.625> on input line 2217.
+LaTeX Info: Redefining \textbackslash on input line 3600.
+\leftroot@=\count95
+\uproot@=\count96
+LaTeX Info: Redefining \sqrt on input line 3658.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen110
+\Gin@req@width=\dimen111
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 137.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+\tableleftskip=\skip45
+\tablerightskip=\skip46
+\tablenoteleftskip=\skip47
+\tablenoterightskip=\skip48
+\tempbox=\box36
+\tabledim=\dimen112
+) (./pasj.aux)
+\openout1 = `pasj.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 13.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+
+Package epstopdf Warning: Drivers other than `pdftex.def' are not supported.
+
+)
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 25.
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.5> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 29.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 29.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 29.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 29.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <18> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <18> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 36.
+
+
+LaTeX Font Warning: Font shape `OT1/cmtt/m/n' in size <18> not available
+(Font)              size <17.28> substituted on input line 36.
+
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 36.
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 36.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 36.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.25> not available
+(Font)              size <5> substituted on input line 36.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
+(Font)              size <8> substituted on input line 36.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.25> not available
+(Font)              size <5> substituted on input line 36.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 36.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.25> not available
+(Font)              size <5> substituted on input line 36.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8.5> on input line 36.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5.94997> on input line 36.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <4.25> on input line 36.
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 36.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <4.25> not available
+(Font)              size <5> substituted on input line 36.
+
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 36.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 36.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 36.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 38.
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <6.47496> not available
+(Font)              size <6> substituted on input line 38.
+
+
+Underfull \vbox (badness 1728) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.25> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 78.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 90.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9.25> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 90.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 96.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 96.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (48.5pt too high) has occurred while \output is active []
+
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 96.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsphv.fd
+File: omsphv.fd 
+)
+LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <7> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 96.
+ [1
+Non-PDF special ignored!{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/upd
+map/pdftex.map}
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+
+
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!]
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+[]\OT1/cmtt/m/n/9 useamsfonts\OT1/ptm/m/n/9.25 : en-able to use sym-bols de-fin
+ed in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--154
+[]\OT1/ptm/m/n/9.25 As shown in the above ex-am-ple, the de-scrip-tion
+ []
+
+
+Underfull \hbox (badness 4673) in paragraph at lines 150--154
+[]\OT1/cmtt/m/n/9 \altaffilmark{\OT1/ptm/m/sl/9.25 label[]\OT1/cmtt/m/n/9 } \OT
+1/ptm/m/n/9.25 gives a la-bel and cor-re-spond-ing
+ []
+
+
+Overfull \vbox (8.60791pt too high) has occurred while \output is active []
+
+
+[2
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!]
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 276.
+
+Underfull \hbox (badness 3260) in paragraph at lines 312--316
+[]\OT1/ptm/m/n/9.25 To pro-duce long ta-bles, a sim-pli-fied ver-sion of the
+ []
+
+
+Underfull \hbox (badness 3189) in paragraph at lines 346--349
+[]\OT1/ptm/b/n/9.25 Important Notice 1: \OT1/ptm/m/n/9.25 Since PASJ's ``longta
+ble'' en-vi-
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 350--356
+[]\OT1/ptm/b/n/9.25 Important Notice 2: \OT1/ptm/m/n/9.25 In the ``longtable'' 
+en-vi-ron-ment,
+ []
+
+
+Overfull \vbox (8.60791pt too high) has occurred while \output is active []
+
+
+[3
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 407.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.2> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 407.
+LaTeX Font Info:    Calculating math sizes for size <8.2> on input line 407.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.09999> not available
+(Font)              size <5> substituted on input line 407.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.09999> not available
+(Font)              size <5> substituted on input line 407.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.09999> not available
+(Font)              size <5> substituted on input line 407.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8.2> on input line 407.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5.73996> on input line 407.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <4.09999> on input line 407.
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <4.09999> not available
+(Font)              size <5> substituted on input line 407.
+
+LaTeX Font Info:    Calculating math sizes for size <5.73996> on input line 407
+.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.01794> not available
+(Font)              size <5> substituted on input line 407.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <2.86998> not available
+(Font)              size <5> substituted on input line 407.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.01794> not available
+(Font)              size <5> substituted on input line 407.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.86998> not available
+(Font)              size <5> substituted on input line 407.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.01794> not available
+(Font)              size <5> substituted on input line 407.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.86998> not available
+(Font)              size <5> substituted on input line 407.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <4.01794> on input line 407.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <2.86998> on input line 407.
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <4.01794> not available
+(Font)              size <5> substituted on input line 407.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <2.86998> not available
+(Font)              size <5> substituted on input line 407.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 467--478
+\OT1/ptm/m/n/9.25 or ``6$[][]$54$[][]$32$[][][]$1$[][]$'', the class file \OT1/
+phv/m/n/9.25 pasj01.cls \OT1/ptm/m/n/9.25 pro-vides
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 467--478
+\OT1/ptm/m/n/9.25 a sim-ple no-ta-tion []\OT1/cmtt/m/n/9 \timeform{1h23m45.67s}
+ \OT1/ptm/m/n/9.25 or
+ []
+
+
+Underfull \hbox (badness 1655) in paragraph at lines 467--478
+\OT1/ptm/m/n/9.25 com-mand, the let-ter ``\OT1/cmtt/m/n/9 D\OT1/ptm/m/n/9.25 ''
+ cor-re-sponds to the sym-bol ``$[][]$'.
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+l.480 Warning [pasj]: 
+    The use of ambiguous command `\fh' is not recommended.
+    Use `\timeform' in place of `\fh'.
+l.480 Warning [pasj]: 
+    The use of ambiguous command `\fdg' is not recommended.
+    Use `\timeform' in place of `\fdg'.
+
+Overfull \vbox (8.60791pt too high) has occurred while \output is active []
+
+
+[4
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!]
+Overfull \vbox (8.60791pt too high) has occurred while \output is active []
+
+
+[5
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!] (./pasj.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 2.13002pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2316 strings out of 493117
+ 30574 string characters out of 6135433
+ 214326 words of memory out of 5000000
+ 5735 multiletter control sequences out of 15000+600000
+ 56265 words of font info for 94 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,23n,23p,306b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2014/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
+ublic/amsfonts/latxfont/lasy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/public/amsfonts/latxfont/lcircle1.pfb></usr/local/texlive/2014/texmf-dist/fo
+nts/type1/public/amsfonts/latxfont/line10.pfb></usr/local/texlive/2014/texmf-di
+st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/t
+imes/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on pasj.pdf (5 pages, 254789 bytes).
+PDF statistics:
+ 133 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

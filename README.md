@@ -1,0 +1,1 @@
+# HSC_brightStarMasks

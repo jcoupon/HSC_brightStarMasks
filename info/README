@@ -1,0 +1,141 @@
+This archive contains the masks and tools to flag objects
+potentially affected by a nearby star in the HSC-SSP footprint
+
+-----------------------------------------------------------
+Current version:
+-----------------------------------------------------------
+
+- "Arcturus" (April 21th, 2017): identical to Canopus,
+	with tract- and patch-based region files included.
+
+-----------------------------------------------------------
+Previous versions:
+-----------------------------------------------------------
+
+- "Canopus" (April 2017): new masks, Gaia-dr1, Tycho-2 and SDSS,
+	pure star sample, a few areas with lower Gaia-star density
+	due to low scanned areas.
+
+- "Sirius" (March 2016, S15B, S16A, PDR1): 8% of bright galaxies,
+	size of mask over conservative below mag ~ 5 for a dozen stars.
+
+-----------------------------------------------------------
+Uncompressing the archive:
+-----------------------------------------------------------
+
+Run:
+
+$ tar xzvf HSC-SSP_brightStarMask_VERSION.tgz
+
+-----------------------------------------------------------
+Installing venice
+-----------------------------------------------------------
+
+venice is a mask utility program that reads a mask file (DS9 or fits type)
+and a catalogue of objects to:
+- create a pixelized mask,
+- find objects inside/outside a mask,
+- or generate a random catalogue of objects inside/outside a mask.
+
+The code sources are in HSC-SSP_brightStarMask_VERSION/venice-v.v.v/
+
+To compile it, you first need to install the gsl and cfitsio
+libraries (http://www.gnu.org/software/gsl/, http://heasarc.gsfc.nasa.gov/fitsio/).
+
+Then, go to venice directory
+
+$ cd HSC-SSP_brightStarMask_VERSION/venice-v.v.v/
+
+and run:
+
+$ make
+
+or, if gsl and cfisio libraries are installed in a different directory than /usr/local:
+
+$ make PREFIX_GSL=DIRECTORY_NAME PREFIX_CFITSIO=DIRECTORY_NAME
+
+If you want to use a different compiler than gcc,
+type (only tested with gcc and icc):
+
+$ make CC=my_favorite_compiler
+
+The compiled program is installed in HSC-SSP_brightStarMask_VERSION/venice-v.v.v/bin/
+
+-----------------------------------------------------------
+star catalogue
+-----------------------------------------------------------
+
+the star catalogue is in HSC-SSP_brightStarMask_VERSION/star.
+It contains the following information:
+
+Columns: 9
+Rows:    1812106
+
+Columns
+-------
+     1: source_id(Long) - source_id
+     2: ra(Double)/Angle[deg] - ra
+     3: dec(Double)/Angle[deg] - dec
+     4: G_Gaia(Double)/Magnitude[mag] - phot_g_mean_mag
+     5: origin(String)
+     6: G_Gaia_SDSS(Double)
+
+-----------------------------------------------------------
+flagging a catalogue using venice
+-----------------------------------------------------------
+
+Run:
+
+$ venice \
+	-m reg/masks_all.reg -f all \
+	-cat MY_INPUT_CAT \
+	-xcol RA_COLUMN_NAME -ycol DEC_COLUMN_NAME \
+	-o MY_OUTPUT_CAT
+
+Note: venice can read both fits files (default) and ascii files.
+For ascii files, set: "-ifmt ascii" and "-ofmt ascii"
+
+See https://github.com/jcoupon/venice for more information
+
+-----------------------------------------------------------
+tract and patch version
+-----------------------------------------------------------
+
+The archives "reg/patches.tgz" "reg/tracts.tgz" contains
+the masks split per tract and patch for the
+five filters. To untar it, run:
+
+$ cd HSC-SSP_brightStarMask_VERSION/reg
+
+$ tar xzvf tracts.tgz
+$ tar xzvf patches.tgz
+
+WARNING: tracts expand into 5715 files and patches expand into 356550 files!
+
+The file path and names are the following:
+
+tract: HSC-SSP_brightStarMask_VERSION/reg/tracts/BrightStarMask-9000-0,0-FILTER.reg
+patch: HSC-SSP_brightStarMask_VERSION/reg/tracts/TRACT/BrightStarMask-TRACT-PATCH-FILTER.reg
+
+Note: currently, the mask is the same for each filter, so g, r, z, and Y filter masks
+are symbolic links pointing to the i filter mask.
+
+-----------------------------------------------------------
+example: flag objects in tract 9376
+-----------------------------------------------------------
+
+- first create a catalogue of random points for the
+	example:
+
+$ venice -r -xmin 221.476 -xmax 222.967 -ymin -1.5014 -ymax 0.0442215 -coord spher -o tract_9376.fits
+
+$ venice -m tracts/9376/BrightStarMask-9376-HSC-I.reg -cat tract_9376.fits -xcol ra -ycol dec \
+ 	-f all -flagName isOutsideMask -o tract_9376_flagged.fits
+
+Explanation:
+	-m tracts/9376/BrightStarMask-9376-HSC-I.reg: masks in region format
+	-cat tract_9376.fits: catalogue to flag
+	-xcol ra -ycol dec: names of the input coordinates columns
+	-f all: keep all object, 1: oustide the mask, 0: inside the mask
+	-flagName isOutsideMask: name of the flag column
+	-o tract_9376_flagged.fits: the output file

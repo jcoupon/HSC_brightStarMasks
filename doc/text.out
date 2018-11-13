@@ -1,0 +1,22 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Saturated stars in HSC}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Overview}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Saturation magnitudes in HSC}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{The bright-star sample}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Gaia}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Tycho-2}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Gathering a complete star sample}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.4}{Ensuring a pure star sample}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.5}{Summary}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Building the masks}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Isotropic effects and ghosts}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Impact of saturated bleed trails}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.3}{Anisotropic impact of diffraction spikes}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.4}{Ghosts}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Masks validation and limitations}{}% 16
+\BOOKMARK [2][-]{subsection.5.1}{Visual inspection of extended objects}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.2}{Comparison with the S15B/S16A/DR1 bright-object catalogue}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.3}{The two-point correlation function}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.4}{The galaxy-galaxy lensing signal around massive clusters}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.5}{The masked area}{section.5}% 21
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 22

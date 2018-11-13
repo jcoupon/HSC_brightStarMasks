@@ -1,0 +1,546 @@
+\documentclass[11pt,a4paper,oneside,final]{scrartcl}
+
+%-------------
+%\usepackage{aas_macros}
+\usepackage{tabularx}
+\usepackage{url}
+\usepackage{txfonts}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+
+\usepackage{aas_macros}
+
+\graphicspath{{figures/}}
+
+\setlength{\textwidth}{165mm}
+\setlength{\headheight}{5mm}
+\setlength{\oddsidemargin}{0mm}
+\setlength{\topmargin}{0mm}
+\linespread{1.2}
+
+\begin{document}
+
+%\maketitle
+
+\begin{center}
+\noindent
+\textsc{\LARGE{{The bright star masks for the HSC-SSP survey}}}\\
+Jean Coupon\footnote{Contact: \url{jean.coupon@unige.ch}} and the bright star mask team\\
+\today
+\end{center}
+%\vspace{10mm}
+
+\noindent
+
+\section{Introduction}
+
+The high sensitivity of the Hyper-Suprime-Cam is such that on a typical exposure of a few minutes, point-source objects brighter than $\sim17-19$th magnitude saturate and affect nearby sources. Ideally one would like to directly rely on our catalogue to identify and mask bright stars\footnote{Here, other bright point sources, such as QSOs, are included in the term \emph{bright stars}.}, however, if the pipeline can identify large saturated areas, it is difficult (although not impossible) to precisely measure the required size of masks due to the photometric artefacts caused by the bright stars.  To ease the process, we therefore make use of external data.
+
+A first version of the bright-object masks has been made by Jean Coupon and Nicole Czakon for the S15B and S16A internal data releases, but this version was over conservative in the choice of mask radius and contained about 10\% of bright galaxies, making it non ideal for a number of science cases. The goal here is to update the masks to a much cleaner version (i.e. truly a bright-\emph{star} mask).
+
+In this document we describe the procedure we adopt to automatically construct and validate the bright-star masks for the HSC-SSP broad-band filters $grizY$, using data from the Gaia, Tycho-2, and SDSS surveys. We limit ourselves to the sample of bright stars that saturate on HSC-SSP images (the information on non-saturated stars -- such as brightness and PSF-size -- can be easily gathered HSC-SSP data), that is as complete as possible, and 100\% pure (to avoid masking bright galaxies). We first describe the problem in Section~\ref{sec:pb}, we then describe how we gather a sample of bright stars in Section~\ref{sec:catalogue} and how we construct the masks in Section~\ref{sec:masks}. In a last Section~\ref{sec:valid} we estimate the purity and completeness of the bright stars masks, quantify the improvement on a number of observables, and describe their limitations. We conclude in Section~\ref{sec:conclusions}.
+
+
+\section{Saturated stars in HSC}
+\label{sec:pb}
+
+\subsection{Overview}
+
+The brighter-fatter effect, the diffraction, and electron leaking to nearby pixels, result in (1) isotropic luminous haloes, (2) anisotropic spikes, and (3) unidirectional ``bleed trails'', as shown in Figure~\ref{fig:saturated_star}. The extent of the saturated stars on the image increases with brightness and therefore impact the neighbouring sources through the degradation of the detection performance and the measurements reliability, as well as screening background sources. Here we aim to record the position of such bright stars and to construct photometric masks to reject those unreliable sources.
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.70\textwidth]{{saturated_star}.png}
+    \caption{An example of a saturated star in HSC-SSP survey in a $i$-band image ($i\sim8$). One can see the horizontal bleed trails, the extended luminous halo and the diffraction patterns.}
+    \label{fig:saturated_star}
+\end{figure}
+
+\subsection{Saturation magnitudes in HSC}
+
+To build the reference bright-star sample we must first assess the saturation magnitude limits on HSC images in each band to restrict the former to only those stars that saturate on HSC-SSP images. However, we will see below that the typical saturation magnitudes in HSC-SSP ($17-19$) is fainter than the magnitude limit down to which we are able to build a reliable bright-star sample from external data (i.e. Gaia\footnote{The Gaia $G_{\rm Gaia}$ covers the optical wavelength range from 4000 to 10000 $\AA$ and is totally different from the HSC $g$-band filter.}, $G_{\rm Gaia} < 20.7$). In addition, due to the HSC seeing variations, the limitation of the bright star sample (the Gaia dr1 is not 100\% complete in color and position), and the Gaia broad-band selection, the fraction of unmasked saturated stars increases towards fainter magnitudes (red bands $>19$). Conversely, a small fraction of non-saturated stars might be masked. This means that in some part of the survey where the seeing is significantly worse than elsewhere, we may mask non-saturated stars. We remark that it is not an issue as long as we do not mask galaxies wrongly identified as stars.
+
+The saturation limit depends mainly on the single-visit exposure time and the seeing. The former depends on the survey layer, as shown in Table~\ref{tab:exp_time}. The latter depends on the observing epoch, however. Since we are working on co-added images, the seeing we take into account is the combination of co-added single exposure. Figure~\ref{fig:seeingDist} shows the seeing distribution for the ``S16A'' internal release, in each survey layer and each of the $grizY$ filters. 
+%
+\begin{table}
+\caption{Single-visit exposure times (in s) for each filter and survey layer.}
+\begin{center}
+\begin{tabular}{ |l|c|c|c|c|c| }
+\hline
+ Layer & $g$ & $r$ & $i$ & $z$ & $Y$ \\
+\hline
+Wide & 150 & 150 & 200 & 200 & 200 \\
+Deep & 180 & 180 & 270 & 270 & 270 \\
+Ultra Deep & 300 & 300 & 300 & 300 & 300\\
+\hline
+\end{tabular}
+\end{center}
+\label{tab:exp_time}
+\end{table}
+%
+The seeing at a given position is calculated by the pipeline from fitting a smooth spatial model per single exposure with (non-saturated) bright stars, and coadded along with the images (here using a sigma-weighted mean). The quantities shown in Figure~\ref{fig:seeingDist} are drown from the (determinant radius of) the second moment given in arcseconds and computed at random positions, multiplied by $2\sqrt{2}$ to convert into the commonly used FWHM (full width half maximum) unit, under the assumption that the seeing luminosity profile is gaussian\footnote{Although it is not really gaussian, this assumption is good enough for relative comparison.}. Figure~\ref{fig:seeingSpatialDist} illustrates the typical seeing sky pattern observed on co-added images in the Wide, here shown for the $i$-band.
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.49\textwidth]{{seeingDist_wide}.pdf}
+  \includegraphics[width=0.49\textwidth]{{seeingDist_deep}.pdf}
+  \includegraphics[width=0.49\textwidth]{{seeingDist_udeep}.pdf}
+    \caption{Normalised FWHM seeing distributions in the three HSC-SSP layers for the S16A internal release (Wide: top left, Deep: top right, and Ultra Deep: bottom), and for each filter.}
+    \label{fig:seeingDist}
+\end{figure}
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.70\textwidth]{{Seeing_iband_spatial}.png}
+    \caption{Illustration of the typical seeing pattern on co-added images. Here we show the spatial seeing distribution for the $i$-band in the Wide layer.}
+    \label{fig:seeingSpatialDist}
+\end{figure}
+
+Finally, we show in Figure~\ref{fig:saturVsSeeing} the median saturation (PSF) magnitude in each survey layer and each filter. To measure the saturation magnitude we select all bright objects detected by the pipeline with a successfully measured PSF magnitude, imposing that the central pixel is flagged as saturated and that the object is not deblended. The figure shows the expected trend that the typical saturation limit becomes brighter as the seeing gets smaller. We also confirm that the longer exposure times in the Ultra Deep result in fainter saturation magnitudes as compared to the Wide. The changing limit observed in the different filters most probably has to do with the varying filter transparency and chromatic effects on the PSF.
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.49\textwidth]{{saturVsSeeing_wide}.pdf}
+  \includegraphics[width=0.49\textwidth]{{saturVsSeeing_deep}.pdf}
+  \includegraphics[width=0.49\textwidth]{{saturVsSeeing_udeep}.pdf}
+ \caption{Saturation PSF magnitudes for bright stars as a function of seeing FWHM in the three HSC-SSP layers for the S16A internal release (Wide: top left, Deep: top right, and Ultra Deep: bottom), and for each filter. The solid line shows the median, whereas the shaded area represents the 25\% and 75\% percentiles.}
+    \label{fig:saturVsSeeing}
+\end{figure}
+
+In the following, we adopt the good-seeing saturation magnitudes as the magnitude upper-limit cut for the reference bright-star masks. As explained above, this guarantees that all saturated stars are masked on the HSC-SSP images wherever the external data allow us to construct a pure star sample, at the expense of a small fraction of non-saturated stars potentially masked. We summarize the values in Table~\ref{tab:saturLimits}. The smaller exposure times in the Wide are compensated by usually better seeing, so that the saturation magnitudes are equivalent or fainter than in the deeper layers. Note for example the $i$-band magnitude of 20.7 that occurs in very good seeing data ($< 0.5$"). Again this does not represent the typical saturation magnitudes but only those in best-seeing co-added images.
+%
+\begin{table}
+\caption{Point-source saturation (PSF) magnitude on best-seeing co-added images.}
+\begin{center}
+\begin{tabular}{ |l|c|c|c|c|c| }
+\hline
+ Layer & $g$ & $r$ & $i$ & $z$ & $Y$ \\
+\hline
+Wide & 19.2 & 20.0 & 20.7 & 18.5 & 18.2 \\
+Deep & 20.2 & 19.4 & 18.9 & 18.7 & 18.1 \\
+Ultra Deep & 20.1 & 19.5 & 19.2 & 19.2 & 19.0 \\
+\hline
+\end{tabular}
+\end{center}
+\label{tab:saturLimits}
+\end{table}
+
+\section{The bright-star sample}
+\label{sec:catalogue}
+
+The reference bright-star sample should meet several requirements to be used for masking:
+\begin{itemize}
+\item it must be pure and as as complete as possible over the magnitude range where stars saturate on HSC images,
+\item it must no be fainter than the typical saturation magnitudes in any of the HSC-SSP layers,
+\item it must cover the entire area of the HSC-SSP survey,
+\item and, to first order, it must not rely on HSC-SSP data (since the bright star masks are made prior of the data reduction).
+\end{itemize}
+
+We build the star sample from Gaia dr1, completed with the Tycho-2 star sample to address a number of issues associated with the first Gaia release. We use the $G_{\rm Gaia}$ magnitude -- a broad-band filter covering the range 4000--10000$\AA$ -- as the primary characterisation of star brightness, and we use the SDSS to remove the extended objects wrongly identified as stars by Gaia in the dr1. We detail below the steps followed to build the sample. A quick summary is given in Section~\ref{sec:summary}.
+
+\subsection{Gaia}
+
+Gaia \citep{Gaia-Collaboration:2016ab} is an ESA space mission launched in 2013 whose goal is to observe one billion stars (1\% of the total Milky Way stars), and to provide accurate positions, radial velocities, and spectrophotometry in optical\footnote{The spectrophotometry will be limited to relatively bright stars, $G_{\rm Gaia} < 15$}. The first Gaia data release \citep{Gaia-Collaboration:2016aa} was publicly delivered in September 2016. It includes position measurements and $G_{\rm Gaia}$-band photometry nearly over the entire sky. 
+
+The Gaia star sample is ideally suited for our purpose. With a survey covering the entire sky at a limiting magnitude of $G_{\rm Gaia} < 20.7$ and with optical spectrophotometry, it perfectly meets our requirements. However, the Gaia dr1 comes with a number of limitations that affect the construction of our bright-star sample:
+\begin{itemize}
+\item only the $G_{\rm Gaia}$ photometry is provided,
+\item the sample is incomplete at bright magnitude,
+\item the limiting magnitude is ill-defined and varies across the sky,
+\item some large areas are missing on the ecliptic due to quality filtering and not-yet fully scanned regions,
+\item and some galaxies are included in the sample towards faint magnitudes.
+\end{itemize}
+
+\subsection{Tycho-2}
+
+To complete the Gaia sample at bright magnitude and in under-dense (or empty) areas, we use the Tycho-2 star sample. 
+
+The Tycho-2 star sample \citep{Hog:2000aa} is a complete all-sky catalogue of the 2.5 million brightest stars to a magnitude $V<11.5$, with accurate positions and proper motions, observed by the ESA Hypparcos satellite. It provides two broad-band photometry in $B_{T}$ and $V_{T}$ filters. Here we use the catalogue released by \cite{Pickles:2010aa}, which provides emulated SDSS-like (Sloan Digital Sky Survey) $ugriz$ photometry for all Tycho-2 stars. To be consistent with Gaia stars, we transform the SDSS magnitudes into $G_{\rm Gaia}$ magnitude, according to the formula given in \cite{Jordi:2010aa}:
+\begin{equation}
+\label{eq:emulGaia}
+G_{\rm Gaia} = g_{\rm sdss} - 0.0940 - 0.5310\times (g_{\rm sdss}-i_{\rm sdss}) -0.0974\times (g_{\rm sdss}-i_{\rm sdss})^2 + 0.0052\times(g_{\rm sdss}-i_{\rm sdss})^3 \, .
+\end{equation}
+
+Since the stars brightness varies across the spectrum, it would be, in principle, required to set the size of the masks in each band, separately, using the color information when available. However we take the simpler  (and limited by the dr1 release) approach to characterise the star brightness in all HSC bands using the unique Gaia $G_{\rm Gaia}$ magnitude. We will see below that such a simple approach has very little impact, given the procedure we use to determine the required mask sizes (in one word, it slightly increases the size of masks).
+
+\subsection{Gathering a complete star sample}
+
+We first obtained the dr1 Gaia and Tycho-2 catalogues in an area enclosing the full planned HSC-SSP footprint, extended to one degree around the borders to account for bright stars outside the survey footprint that can potentially affect the objects inside. The full HSC-SSP footprint will be eventually composed of three Wide fields: ``Spring'', ``Fall'' and ``Northern''. All the Deep and Ultra Deep fields are within the Wide footprint, except the Deep field ``Elais-N1'', where we add the corresponding Gaia and Tycho-2 objects. We show in Figure~\ref{fig:skyDensity} the sky density of the bright-star catalogue (here, symbolised by the Tycho-2 stars) in the planned HSC-SSP footprint. Note the higher star density near the galactic plane at RA~$\sim22$h and $\sim9$h in the Fall and Spring fields, respectively.
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.49\textwidth]{{Tycho-2_skyDensity_1}.png}
+  \includegraphics[width=0.49\textwidth]{{Tycho-2_skyDensity_2}.png}
+ \caption{Sky density in equatorial coordinates of Tycho-2 stars within the HSC-SSP planned footprint. On the left we show (from top to bottom) the Elais-N1 Deep field, the Northern and Spring Wide fields. On the right we show the Fall field. Other Deep and Ultra-deep fields overlap with the Wide fields.}
+    \label{fig:skyDensity}
+\end{figure}
+
+Then, we assemble the Tycho-2 and Gaia catalogues. We select all objects from the Gaia dr1 release, filtering out those flagged as \texttt{duplicated\_source}.  When a duplicated object between Gaia and Tycho-2 is found, we keep the Gaia position and magnitude. For the other Tycho-2 stars, we emulate the $G_{\rm gaia}$ magnitude following Equation~\ref{eq:emulGaia} (the comparison of the emulated magnitude versus the true value is shown in Figure~\ref{fig:magDiff}). 
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.49\textwidth]{{magDiff_Tycho-2_emulated}.pdf}
+ \caption{Emulated $G_{\rm gaia}$ magnitude for Tycho-2 stars versus the true $G_{\rm gaia}$ value for the stars in common.}
+    \label{fig:magDiff}
+\end{figure}
+%
+In Figure~\ref{fig:magDist} we show the magnitude distribution of Gaia and Tycho-2 objects. The Gaia completeness is especially affected at bright magnitude due to the selection imposed in dr1, but also at all magnitudes due to spatial incompleteness, as illustrated in Figure~\ref{fig:skyDist}. The addition of the Tycho-2 sample ensure at least a complete star sample down to $G_{\rm gaia}\lesssim11.5$.
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.70\textwidth]{{magDist_GaiaTycho-2}.pdf}
+ \caption{Magnitude distributions for Gaia objects (measured magnitude) and Tycho-2 stars (emulated magnitude) in the planned HSC-SSP footprint. As the dr1 Gaia sample is incomplete at bright magnitude, we use the Tycho-2 stars to complete it.}
+    \label{fig:magDist}
+\end{figure}
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.70\textwidth]{{GaiaDensity_zoom}.png}
+ \caption{Example of the dr1 sky distribution of Gaia objects, shown in a zoomed-in area of the HSC-SSP planned footprint (Fall field). The clear patterns show the low-density areas.}
+    \label{fig:skyDist}
+\end{figure}
+
+Warning: the source identification for the Gaia objects is the released \texttt{source\_id} column, however for Tycho-2 stars, it is a custom running number that has nothing to do with the released catalogue nor the original Tycho-2 sample (but it is still called \texttt{source\_id}). In addition, to get a unique identification number, it is recommended to select both the \texttt{source\_id} and \texttt{origin} identifiers.
+
+\subsection{Ensuring a pure star sample}
+\label{sec:pureSample}
+
+To remove the galaxies mistakably identified as stars by Gaia, we make use of the photometric information provided by the SDSS survey \citep{york:2000aa,SDSS-Collaboration:2016aa}. To do so, we matched the Gaia+Tycho2 sample previously assembled to the SDSS photometric objects taken from the DR13 release database. We define an object as extended in SDSS according to the photometric information provided in the three highest-SNR (signal-to-noise ratio) $g,r$ and $i$ bands :
+%
+\begin{verbatim}
+ clean == 1
+ AND (obj.flags_g & dbo.fPhotoFlags('SATUR_CENTER')) == 0
+ AND (obj.flags_r & dbo.fPhotoFlags('SATUR_CENTER')) == 0
+ AND (obj.flags_i & dbo.fPhotoFlags('SATUR_CENTER')) == 0
+ AND ((0.1 < psfMag_g-cModelMag_g AND psfMag_g-cModelMag_g < 20.0)
+   OR (0.1 < psfMag_r-cModelMag_r AND psfMag_r-cModelMag_r < 20.0)
+   OR (0.1 < psfMag_i-cModelMag_i AND psfMag_i-cModelMag_i < 20.0))
+\end{verbatim}
+
+
+The first three conditions impose that the center of the object is not flagged as saturated in any of the $gri$ bands. We do not expect galaxies -- even very bright -- to saturate in the SDSS. The next three conditions are similar to the definition adopted by the SDSS collaboration to define extended objects, but much more conservative to ensure a complete extended-object sample, the goal being to remove \emph{all} galaxies from the bight-star sample. In one word, this condition means that all objects with a light profile 10\% brighter than the PSF light profile in any of the $gri$ bands are flagged as extended.
+
+To validate our approach we cross-matched this catalogue to the existing S16A HSC-SSP data. The HSC images are much deeper and sharper than the SDSS, allowing to make an even more accurate extended/point-source separation. As mentioned above, our objective is to build an HSC-SSP-agnostic bright-star sample, so here the comparison with HSC-SSP serves only as validating our approach. 
+
+We flag extended objects in HSC-SSP using exclusively the $i$-band photometry in the Wide, as the $i$-band observations are always done in sharp-seeing conditions. An extended object is defined as:
+%
+\begin{verbatim}
+parent_id == 0
+AND NOT iflags_pixel_saturated_center 
+AND 0.01 < imag_psf - icmodel_mag AND imag_psf - icmodel_mag  < 20.0
+\end{verbatim}
+
+This selection follows closely that of the SDSS, with the exception that it is only done in the $i$-band and that the light profile should change by only 1\% to be flagged as extended. The first condition ensures that the object was not de-blended. Overall such a definition is also extremely conservative to ensure that all galaxies are properly identified.
+
+The fraction and magnitude distribution of the extended objects in Gaia, as a function of $G_{\rm gaia}$ magnitude, are shown in Figure~\ref{fig:extended}.
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.70\textwidth]{{magDist_GalaxyFrac}.pdf}
+  \includegraphics[width=0.70\textwidth]{{galfrac}.pdf}
+ \caption{Magnitude distributions for Gaia+Tycho-2 objects and the objects identified as extended from the SDSS and HSC-SSP imaging information. The top panel shows the distributions of all objects in our Gaia+Tycho-2 combined catalogue, the extended objects in HSC-SSP, and the extended objects in SDSS, in a common area. The bottom panel shows the relative fraction of HSC (blue) and SDSS (green) extended objects in Gaia.}
+    \label{fig:extended}
+\end{figure}
+%
+It shows that the extended objects start contaminating the star sample in the regime fainter than $G_{\rm gaia}\sim12$, but remains below 3--5\%. The fraction starts becoming larger and larger beyond $G_{\rm gaia}\sim18$, reaching 10\% at the 19th magnitude. The fraction increases significantly beyond 19 for the SDSS sample, probably due to the highly conservative cut in extendedness. Obviously it appears difficult to guarantee a 100\% pure star sample (at least with Gaia dr1 data) at faint magnitude, so we cut our star sample at $G_{\rm gaia}<18$.
+
+In the regime $14 < G_{\rm gaia} < 18$, we remove all objects that are flagged as extended in SDSS according to the criterium given above. At $G_{\rm gaia} < 14$, visual inspection on HSC-SSP images confirms that the ``bump'' seen in the SDSS-flagged extended objects is not real, but caused by stars flagged as non-saturated in the SDSS, but with a diffraction pattern.
+
+\subsection{Summary}
+\label{sec:summary}
+
+We summarise the construction of the bright-star reference sample to be used for masking:
+\begin{itemize}
+\item our starting catalogue is the Gaia dr1 all-sky survey sample,
+\item we restrict the sample to the footprint of the planned HSC-SSP survey, increased by 1 degree around the borders,
+\item we complete the missing bright stars with the Tycho-2 star sample ($V<11.5$) and emulate the $G_{\rm Gaia}$ magnitude from the multi-band information,
+\item the sample is cut at $G_{\rm Gaia} < 18$ beyond which both SDSS and HSC-SSP images show increased extended object contamination ($>10\%$),
+\item we remove all objects flagged as extended in SDSS between $14 < G_{\rm Gaia} < 18$ (2--3 percents).
+\end{itemize}
+
+The final sample contains $1\,789\,934$ stars.
+
+\section{Building the masks}
+\label{sec:masks}
+
+We describe in this section how we construct the masks. The section is divided into three parts, each addressing a different component to be masked: the brighter-fatter pattern, the diffraction spikes and the bleed trails. Our primary metric to evaluate the impact of masks is the detected source density. 
+
+\subsection{Isotropic effects and ghosts}
+
+The brighter-fatter effect takes the shape of the PSF and increases as a function of object brightness. Here we assume that the PSF is circular and, to measure the impact of bright stars on source detection, we match the bright-star sample, binned in $G_{\rm Gaia}$ magnitudes, with the full catalogue of sources detected by the HSC pipeline. We then measure the density of sources as a function of distance from the star position, normalised to the density measured in an outer annulus. We take all stars at bright magnitude ($G_{\rm Gaia}$=3.5, 4.5 and 5.5), whereas for fainter stars, we only take those in a narrow magnitude range around the magnitudes $G_{\rm Gaia}$=6.5, 7.5, 9.5, 11.5, 13.5, 15.5 and 17.5, for which the size of the bin decreases as a function of increasing magnitude, to ease the computations, as the number of stars increases exponentially. Our binning scheme is summarised in Table~\ref{tab:binning}.
+\begin{table}
+\caption{Bright-star sample properties in the planned HSC-SSP footprint. After matching to S16A data the number of star in each bin amounts to roughly 25-30\% of the numbers quoted below (which corresponds to the total observed area in one or more bands as in S16A release), and given in parenthesis.}
+\begin{center}
+\begin{tabular}{ |l|c|c|c|c|c| }
+\hline
+ $G_{\rm Gaia}$  & Bin size [mag] & N (S16A) & $\langle G_{\rm Gaia} \rangle$ & ``Czakon'' radius [arcsec]  \\
+\hline
+% awk '{printf("%s & %s & %s & %.2f &  %.0f \\\\ \n", $1, $2, $3, $4, $5)}' info/crossMatch_all.ascii
+03.50 & 1.0 & 14 (3) & 3.71 &  1391 \\ 
+04.50 & 1.0 & 61 (14) & 4.50 &  899 \\ 
+05.50 & 1.0 & 151 (30) & 5.58 &  498 \\ 
+06.50 & 0.5 & 217 (49) & 6.51 &  302 \\ 
+07.50 & 0.5 & 589 (150) & 7.51 &  181 \\ 
+09.50 & 0.1 & 570 (162) & 9.50 &  73 \\ 
+11.50 & 0.04 & 1041 (290) & 11.50 &  35 \\ 
+13.50 & 0.01 & 1108 (278) & 13.50 &  21 \\ 
+15.50 & 0.004 & 1235 (343) & 15.50 &  14 \\ 
+17.50 & 0.002 & 1253 (350) & 17.50 &  11 \\ 
+\hline
+\end{tabular}
+\end{center}
+\label{tab:binning}
+\end{table}
+
+We show in Figures~\ref{fig:sourceDensity1} and \ref{fig:sourceDensity2} the results. We divide the result into two samples:
+\begin{itemize}
+\item all the parent sources (unique or before deblending, i.e. parent), shown in blue in the figures, 
+\item and all the primary sources (unique or after deblending, i.e. the children), shown in green in the figures.
+\end{itemize}
+%
+The former is an indicator of the typical radius beyond which sources start being lost due to the screening of the brighter-fatter effect of bright stars, hence the rapid drop observed towards the star position. The latter shows that the pipeline is over-deblending the artefacts caused by the bright star, and is a good indicator of potential problems affecting source detection and photometry measurements. For very bright stars, it is primarily due to concentric bright halos around the star, whereas for fainter stars, it is due to the over-deblending of the star itself, identified as an extended (multi-peaked) object by the pipeline.
+
+We use both the parent-source (in blue) and the primary-source (in green) indicators to measure the required isotropic extend of the masks. First, we fit an error function to the parent-source density distribution, where the free parameters are the position and width of the transition. The best-fit error function is shown in red on Figures~\ref{fig:sourceDensity1} and \ref{fig:sourceDensity2}. We then measure the radius where the best-fit completeness reaches 95\%. Secondly, we measure the radius at which the primary-source density is 20\% above the mean source density. Finally, we set the mask radius to the largest indicator, to guarantee that both the primary and parent source samples are unaffected by the bright star.
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_03.50}.pdf}
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_04.50}.pdf}
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_05.50}.pdf}
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_06.50}.pdf}
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_07.50}.pdf}
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_09.50}.pdf}
+     \caption{Normalised density of sources detected by the pipeline around bright stars. The blue histogram shows all the parent sources (unique or before deblending), whereas the green histogram shows the all the primary sources (unique or after deblending, i.e. the children). The red line is the best-fit error function to the blue histogram. Here we show the results for stars in the range $3.5 < G_{\rm Gaia} < 9.5$.}
+    \label{fig:sourceDensity1}
+\end{figure}
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_11.50}.pdf}
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_13.50}.pdf}
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_15.50}.pdf}
+  \includegraphics[width=0.49\textwidth]{{sourceDensity_mag_17.50}.pdf}
+     \caption{Same as Figure~\ref{fig:sourceDensity1}, but for stars in the range $11.5 < G_{\rm Gaia} < 17.5$.}
+    \label{fig:sourceDensity2}
+\end{figure}
+
+The location of the mask radius is indicated by a vertical arrow in Figures~\ref{fig:sourceDensity1} and \ref{fig:sourceDensity2}. We show the star images stacked per bin of magnitudes, as well as the mask radius (white circle) in Figures~\ref{fig:stackedImages1} and \ref{fig:stackedImages2}.
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.19\textwidth]{{mag_03.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_03.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_03.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_03.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_03.50_HSC-Y}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_04.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_04.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_04.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_04.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_04.50_HSC-Y}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_05.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_05.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_05.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_05.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_05.50_HSC-Y}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_06.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_06.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_06.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_06.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_06.50_HSC-Y}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_07.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_07.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_07.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_07.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_07.50_HSC-Y}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_09.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_09.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_09.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_09.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_09.50_HSC-Y}.pdf}
+     \caption{Stacked ($3\sigma$-clipped) images of stars in the range $3.5 < G_{\rm Gaia} < 9.5$. The white circle shows the measured mask radius.}
+    \label{fig:stackedImages1}
+\end{figure}
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.19\textwidth]{{mag_11.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_11.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_11.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_11.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_11.50_HSC-Y}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_13.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_13.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_13.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_13.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_13.50_HSC-Y}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_15.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_15.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_15.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_15.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_15.50_HSC-Y}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_17.50_HSC-G}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_17.50_HSC-R}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_17.50_HSC-I}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_17.50_HSC-Z}.pdf}
+  \includegraphics[width=0.19\textwidth]{{mag_17.50_HSC-Y}.pdf}
+     \caption{Same as Figure~\ref{fig:stackedImages1}, but for stars in the range $11.5 < G_{\rm Gaia} < 17.5$.}
+    \label{fig:stackedImages2}
+\end{figure}
+%
+We see that for the brightest stars ($<9$), the primary-source overdensity indicator occurs at a larger radius than the parent-source drop. This is mainly due to the circular bright halos. For stars fainter than $9$, the star halos are too faint to cause significant issues, and both indicators are showing that only the central bright extent of the star must be masked.
+
+Figure~\ref{fig:maskRadius} shows the mask radius as a function of star magnitude. The measured radius is shown in blue, whereas the former adopted relation is shown in red. One can see the diverging radius at magnitudes below $\sim5$ which explains the very large masks seen in release S16A and before. 
+\begin{figure}
+\center
+  \includegraphics[width=0.70\textwidth]{{maskRadius}.pdf}
+     \caption{Mask radius as a function of star magnitude. The blue curve shows the measured radius as illustrated by the white circles in Figures~\ref{fig:stackedImages1} and \ref{fig:stackedImages2}. The red curve shows the adopted relation applied to previous releases. The vertical black line shows the brightest star in the HSC-SSP footprint.}
+    \label{fig:maskRadius}
+\end{figure}
+
+
+We note that the ghosts located beyond the mask radius for stars brighter than $\sim5$ are not masked by the current masks but will be removed in a further version of the pipeline (see Furusawa-san's report on ghost and satellite trails). These are caused by internal reflexion inside the optics system and their location strongly depends on the position of the star on the focal plane. Hence, by co-adding a number of dithered exposures, one is able to remove them during image processing.
+
+
+\subsection{Impact of saturated bleed trails}
+
+Next, we investigate the saturated bleed trails that appear as thin horizontal lines on the images. We mask those with a horizontal box, centred on the star position. To measure the required length of the box, we plot the distribution of detected sources, as in the previous section, but only along the $x$-axis and restricted to a thin area in the $y$-axis direction. %stribution 
+
+\subsection{Anisotropic impact of diffraction spikes}
+
+\subsection{Ghosts}
+
+
+
+% \subsection{Seeing dependence}
+% \subsection{Do we need full color information?}
+
+\section{Masks validation and limitations}
+\label{sec:valid}
+
+\subsection{Visual inspection of extended objects}
+
+To make sure that all extended objects are safely removed from the Gaia sample (hence from the bright-star masks), using solely the SDSS criterium, we cross-match the bright-star catalogue in the subarea containing observed HSC-SSP data from the S16A internal release. With a superior image quality compared to SDSS, we assume that the HSC-SSP criterium (as described in Section~\ref{sec:pureSample}) is the most robust one to identify extended objects towards faint magnitudes. Again, the goal is to demonstrate that one is able to build a pure-star mask without the need for the HSC-SSP data, since the masks are applied during the data processing and must be ready before the observations.
+
+As we have seen from the bottom panel of Figure~\ref{fig:extended}, the SDSS criterium tends to flag more (supposedly) extended objects than the HSC-SSP criterium, due to the more conservative approach to define extended object in SDSS. But here we want to know if \emph{all} truly extended objects are  removed, so, after removing SDSS-flagged-as-extended objects, we select those that are flagged as extended in HSC-SSP.
+
+Out of $325\,028$ objects in the S16A HSC-SSP footprint, $2\,609$ are flagged as extended in HSC-SSP (0.8\%). We visually inspected all of the $2\,609$ objects and found that most of them are:
+\begin{itemize}
+\item binary stars resolved by HSC,
+\item randomly aligned stars with other objects (we remind that our HSC criterium takes only \emph{non}-deblended sources),
+\item or stars near artefacts.
+\end{itemize}
+
+Those are not problematic, as they represent a nuisance for nearby galaxies, and do not need to be removed from the masks. We show some examples in Figures\ref{fig:randomAlign}, \ref{fig:binary} and \ref{fig:artefact}.
+%
+\begin{figure}
+\center
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_1}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_2}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_3}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_4}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_5}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_6}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_7}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_8}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_9}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/RandomAlign_10}.png}
+   \caption{Example of stars randomly aligned with an extended object, flagged as not extended by the SDSS. The green circles are the Gaia positions. These cases can be safely masked, as the photometry of the galaxy would be contaminated by the star.}
+    \label{fig:randomAlign}
+\end{figure}
+%
+\begin{figure}
+\center
+  \includegraphics[height=0.20\textwidth]{{stamps/Binary_1}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/Binary_2}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/Binary_3}.png}\\
+  \includegraphics[height=0.20\textwidth]{{stamps/Binary_4}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/Binary_5}.png}
+    \caption{Example of binary stars not resolved by SDSS but by HSC. These cases can also be safely masked.}
+    \label{fig:binary}
+\end{figure}
+%
+\begin{figure}
+\center
+  \includegraphics[height=0.20\textwidth]{{stamps/Artefact_1}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/Artefact_2}.png}
+    \caption{Example of stars near artefacts in HSC. These cases can also be safely masked.}
+    \label{fig:artefact}
+\end{figure}
+
+The problematic objects (i.e. which we do not want to mask) are shown in Figure\ref{fig:problematic}. We found a total of 13, all shown in the figure. Among those, a few look like galaxies hosting a bright Quasar, although masking or not those objects is unclear, since the photometry (hence the photometric redshift and physical properties) are likely to be wrong. At least we want to be able to identify those objects, which HSC data is able to do. One galaxy seems to have a bright bulge and is largely extended (it is surprising that they were not flagged as extended in the SDSS). This is the most problematic case.
+%
+\begin{figure}
+\center
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_1}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_2}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_3}.png}\\
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_4}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_5}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_6}.png}\\
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_7}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_8}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_9}.png}\\
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_10}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_11}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/ExtendedTrue_12}.png}
+    \caption{All of the extended objects that are masked as bright stars but are probably galaxies with a bright bulge or hosting a quasar. The one in the left bottom is the most problematic.}
+    \label{fig:problematic}
+\end{figure}
+
+To conclude, out of $353\,768$ objects in our bright-``star'' sample overlapping the current HSC-SSP data, $2\,979$ (0.84\%) appeared extended on HSC images, 13 (0.004\%) are probably real interesting objects, and 1 is really problematic and should not be included in the masks. Since a few thousand objects is a reasonable number to handle, our suggestion is to remove these objects in later versions of the masks, when we have the HSC-SSP data to do the visual inspection everywhere.
+
+%  + GAMA, PanSTARRS, and Tract 9376
+
+\subsection{Comparison with the S15B/S16A/DR1 bright-object catalogue}
+
+It is known that the bright-object catalogue released in S15B, S16A and DR1 releases (hereafter ``S16A mask'') contains a number of bright galaxies. To evaluate the percentage of galaxies in the S16A mask we cross-match it with the SDSS catalogue.
+
+We do the comparison in a single tract (9376). After matching the S16A objects with the SDSS catalogue, we identify the ones flagged as extended, and we draw their magnitude distribution, as shown in Figure~\ref{fig:S16AMagDist} (the part at bright magnitude is actually matched to the bright-star catalogue, since SDSS stars saturate below the 14th magnitude). The fainter magnitude observed here comes from the fact that the emulated $G_{\rm Gaia}$ magnitude was computed from the SDSS PSF magnitudes (hence in the central, fainter, part of the galaxies). 
+%
+\begin{figure}
+\center
+  \includegraphics[width=0.70\textwidth]{{magDist_S16A}.pdf}
+  \caption{Magnitude distribution for the S16A mask objects cross-matched with the SDSS catalogue. In green we show the distribution of objects identified as galaxies in the SDSS (note that the bright part is actually matched to the bright-star catalogue, since SDSS stars saturate at $G_{\rm Gaia} < 14$.), and in blue the true stars.}
+\label{fig:S16AMagDist}
+\end{figure}
+
+Most of the extended objects are bright galaxies with prominent bulge (mostly elliptical, but not only), some bright galaxies removed flagged as extended because of some nearby contaminant, and a few binary stars. We illustrate in Figure~\ref{fig:S16A_ext} a few example of the typical galaxies in the S16A mask catalogue.
+\begin{figure}
+\center
+  \includegraphics[height=0.20\textwidth]{{stamps/S16A_ext_1}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/S16A_ext_2}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/S16A_ext_3}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/S16A_ext_4}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/S16A_ext_5}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/S16A_ext_6}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/S16A_ext_7}.png}
+  \includegraphics[height=0.20\textwidth]{{stamps/S16A_ext_8}.png}
+  \caption{Example of galaxies in the S16A mask catalogue (that are \emph{not} in the bright-star sample presented in this study. The green circle is the NOMAD position.}
+\label{fig:S16A_ext}
+\end{figure}
+
+To summarise, out of $3\,255$ objects (in the HSC-SSP tract 9376) from the S16A mask, we find that 20\% are not matched with none of the $G_{\rm Gaia} < 18$ or the bright SDSS sample. This is mostly due to faint objects from the NOMAD catalogue that scatter to fainter magnitude. $2\,609$ objects are matched with at least Gaia or SDSS, among which $211$ (8.9\%) are flagged as extended. Note that this number is an underestimate since we did not measure the fraction of galaxies beyond the limiting magnitude of the bright-star Gaia and bright-SDSS catalogues.
+
+\subsection{The two-point correlation function}
+
+\subsection{The galaxy-galaxy lensing signal around massive clusters}
+
+\subsection{The masked area}
+
+%Plot with fraction of area as a function of magnitude.
+
+
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+
+
+%Bibtex
+\bibliographystyle{mnras}
+\bibliography{references}
+\end{document}
